@@ -5,5 +5,6 @@ Frontpage:
 
 
 Data page:
-![image](https://github.com/JoschaRombach/Proteome-wide_map_of_membrane_binding/assets/153042844/9518db5c-a2b0-4050-928b-bf1b686014cd)
+![image](https://github.com/JoschaRombach/Proteome-wide_map_of_membrane_binding/assets/153042844/f8dec209-dfd1-4dd8-94b7-59d360c226ef)
+
 
