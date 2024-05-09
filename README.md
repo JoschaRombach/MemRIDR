@@ -5,7 +5,7 @@ Instructions:
 2. Download the folder "Array_app" and place it anywhere on your computer
 3. Navigate to the file "app.R" and open it
 4. Press the "Run App" button (green arrow) in the top right corner of the script panel
-- First time use only:
+First time use only:
 5. The app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
 
   CRAN:             'tidyverse','berryFunctions','seqinr','stringr','data.table',
