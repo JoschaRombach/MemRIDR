@@ -8,7 +8,10 @@ Instructions:
 First time use only:
 5. The app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
 
-If you want to install packages seperately use "install.packages()" to download: 'tidyverse','berryFunctions','seqinr','stringr','data.table','viridis','bio3d','ggprism','ggExtra','gridExtra','zoo','RColorBrewer','shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react','shinyWidgets','circlize'
+If you want to install packages seperately use "install.packages()" to download:
+'tidyverse','berryFunctions','seqinr','stringr','data.table','viridis','bio3d',
+'ggprism','ggExtra','gridExtra','zoo','RColorBrewer','shiny','DT','shiny.fluent',
+'imola','cowplot','shiny.router','shiny.react','shinyWidgets','circlize'
 
 Use "BiocManager::install()" to install: 'msa' and 'ggtree'
 
