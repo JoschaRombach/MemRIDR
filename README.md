@@ -7,11 +7,14 @@ Instructions:
 4. Press the "Run App" button (green arrow) in the top right corner of the script panel
 - First time use only:
 5. The app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
+
   CRAN:             'tidyverse','berryFunctions','seqinr','stringr','data.table',
                     'viridis','bio3d','ggprism','ggExtra','gridExtra','zoo','RColorBrewer',
                     'shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react',
                     'shinyWidgets','circlize'
+  
   Bioconductor:     'msa','ggtree'
+  
   Github:           'r3dmol'
 
 Frontpage:
