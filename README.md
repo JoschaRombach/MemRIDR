@@ -8,14 +8,11 @@ Instructions:
 First time use only:
 5. The app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
 
-  CRAN:             'tidyverse','berryFunctions','seqinr','stringr','data.table',
-                    'viridis','bio3d','ggprism','ggExtra','gridExtra','zoo','RColorBrewer',
-                    'shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react',
-                    'shinyWidgets','circlize'
-  
-  Bioconductor:     'msa','ggtree'
-  
-  Github:           'r3dmol'
+If you want to install packages seperately use "install.packages()" to download: 'tidyverse','berryFunctions','seqinr','stringr','data.table','viridis','bio3d','ggprism','ggExtra','gridExtra','zoo','RColorBrewer','shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react','shinyWidgets','circlize'
+
+Use "BiocManager::install()" to install: 'msa' and 'ggtree'
+
+Use "devtools::install_github("swsoyee/r3dmol", upgrade = 'never')" to install 'r3dmol'
 
 Frontpage:
 ![image](https://github.com/JoschaRombach/Proteome-wide_map_of_membrane_binding/assets/153042844/9088bc27-9fad-4d97-ae31-1dba8ea0d637)
