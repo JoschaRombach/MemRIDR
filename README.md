@@ -1,7 +1,7 @@
 The app is still under development and not all functionalities currently work.
 
 Instructions:
-1. Download any version of R (version > 4.2.1, https://www.r-project.org/) and Rstudio (https://posit.co/download/rstudio-desktop/)
+1. Download R (version > 4.2.1, https://www.r-project.org/) and Rstudio (https://posit.co/download/rstudio-desktop/)
 2. Download the folder "Array_app" and place it anywhere on your computer
 3. Navigate to the file "app.R" and open it
 4. Press the "Run App" button (green arrow) in the top right corner of the script panel
