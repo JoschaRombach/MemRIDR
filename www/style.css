@@ -1,0 +1,33 @@
+.grid-container {
+  display: grid;
+}
+
+.header {
+  grid-area: header;
+  background-color: #fff;
+  display: flex;
+}
+
+.main {
+  grid-area: main;
+  background-color: #fff;
+}
+
+body {
+  background-color: #fff;
+  min-height: 611px;
+  margin: 0;
+}
+
+#datapanel {
+   border-radius: 20px;
+   box-shadow: 0 0 10px #0275d8;
+   margin: 0px;
+   padding: 0px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #8f54a0;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
