@@ -1,4 +1,6 @@
 The app is still under development and not all functionalities currently work.
+The data file Array_object.rds has not been added yet so app does not work as provided on github. 
+If you want access email joscharom@outlook.com and I will share the file with you.
 
 Frontpage:
 ![image](https://github.com/JoschaRombach/Proteome-wide_map_of_membrane_binding/assets/153042844/9088bc27-9fad-4d97-ae31-1dba8ea0d637)
@@ -9,7 +11,7 @@ Data page:
 
 Instructions:
 1. Download R (version > 4.2.1, https://www.r-project.org/) and Rstudio (https://posit.co/download/rstudio-desktop/)
-2. Download the folder "Array_app" and place it anywhere on your computer
+2. Download all files as .zip, place it anywhere on your computer and unzip
 3. Navigate to the file "app.R" and open it
 4. Press the "Run App" button (green arrow) in the top right corner of the script panel
 First time use only:
