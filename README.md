@@ -15,8 +15,7 @@ Instructions:
 2. Download all files as .zip, place it anywhere on your computer and unzip
 3. Navigate to the file "app.R" and open it in Rstudio
 4. Press the "Run App" button (green arrow) in the top right corner of the script panel
-First time use only:
-5. The app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
+5. First time use only: the app will prompt you to allow for download of packages from CRAN, Bioconductor and Github:
 
 If you want to install packages seperately use "install.packages()" to download:
 'tidyverse','berryFunctions','seqinr','stringr','data.table','viridis','bio3d',
