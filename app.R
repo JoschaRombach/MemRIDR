@@ -12,14 +12,16 @@
 
 
 
-################################################################################
-################################## READ DATA ###################################
-################################################################################
+# ################################################################################
+# ################################## READ DATA ###################################
+# ################################################################################
 
 suppressPackageStartupMessages(library(here))
 
-Array_object <- readRDS(here('data','Array_object.rds'))
-Array_object$Import_functions()
+Array_object <<- readRDS(here('data/Array_objects_single_proteins','Array_object_Q9P2U7.rds'))
+#Array_object$Import_functions()
+source(here('code','Functions.R'))
+keys <- read.csv('data/ID_mapping.csv')
 
 ################################################################################
 ############################### USING ENTER KEY ################################
@@ -126,8 +128,8 @@ app_footer <- flexPanel(
     justify_content = 'space-evenly',
     style = 'border-radius: 20px; background-color: #daedf0;',
     div(
-        tags$a(img(src = "UCPH_logo.png", style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://in.ku.dk/research/madsen-lab/"),
-        tags$a(img(src = "LF_logo.png",   style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://lundbeckfonden.com/")
+        tags$a(img(src = "UCPH_logo.png", style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://in.ku.dk/research/madsen-lab/")#,
+        #tags$a(img(src = "LF_logo.png",   style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://lundbeckfonden.com/")
         ),
     div('If you use this database in a publication, please cite: Rombach, J., Nielsen, T. T. E., .....')
 )
@@ -138,8 +140,8 @@ app_footer_data <- flexPanel(
   justify_content = 'space-evenly',
   style = 'border-radius: 20px; margin-bottom: 30px; background-color: #fff;',
   div(
-    tags$a(img(src = "UCPH_logo.png", style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://in.ku.dk/research/madsen-lab/"),
-    tags$a(img(src = "LF_logo.png",   style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://lundbeckfonden.com/")
+    tags$a(img(src = "UCPH_logo.png", style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://in.ku.dk/research/madsen-lab/")#,
+    #tags$a(img(src = "LF_logo.png",   style = "margin-left: 30px; width: 300px; cursor:pointer;"),href="https://lundbeckfonden.com/")
   ),
   div('If you use this database in a publication, please cite: Rombach, J., Nielsen, T. T. E., .....')
 )
@@ -196,7 +198,7 @@ data_page <- gridPanel(
                                         "Set confidence", 
                                         c('low','medium','high'), 
                                         inline = T, 
-                                        selected = c('low'))
+                                        selected = c('medium'))
                     ),
                     column(6, 
                            uiOutput("UniProtLink_button")
@@ -299,14 +301,16 @@ ui <- fluidPage(
 ################################################################################
 
 server <- function(input, output, session) {
+  
     
+  
     # Search for query matches -------------------------------------------------
     selectprotein <- eventReactive(input$submit, {
-        search_for_protein(input$proteinquery, array_object = Array_object)
+        search_for_protein(search = input$proteinquery, keys = keys)
     })
     
     # Plot table with hits for search query ------------------------------------
-    output$proteintable = DT::renderDT(selectprotein(),
+    output$proteintable = DT::renderDT(selectprotein()[,c(3,1,2)],
                                        plugins = "ellipsis",
                                        selection = list(
                                                         mode='single',
@@ -328,20 +332,25 @@ server <- function(input, output, session) {
                                                     )
                                        )
 
+    # Import Array_object ------------------------------------------------------
+    Array_object_path <- reactive({selectprotein()[input$proteintable_rows_selected,5]})
+    
+    Array_object <- reactive({readRDS(Array_object_path())})
+    
     # Select terminal to focus on ----------------------------------------------
     UniProt <- reactive({
       
           if(!is.null(input$proteintable_rows_selected)){
                 if(length(input$terminal)==1){
-                   UniProt <- paste0(selectprotein()[input$proteintable_rows_selected,1],'_',input$terminal)
+                   UniProt <- paste0(selectprotein()[input$proteintable_rows_selected,3],'_',input$terminal)
                 } else {
-                   UniProt <- selectprotein()[input$proteintable_rows_selected,1]
+                   UniProt <- selectprotein()[input$proteintable_rows_selected,3]
                 }
           } else {
                 if(length(input$terminal)==1){
-                   UniProt <- paste0(selectprotein()[1,1],'_',input$terminal)
+                   UniProt <- paste0(selectprotein()[1,3],'_',input$terminal)
                 } else {
-                   UniProt <- selectprotein()[1,1]
+                   UniProt <- selectprotein()[1,3]
                 }
           }
       })
@@ -353,7 +362,7 @@ server <- function(input, output, session) {
            class = "btn btn-default action-button",
            style = "width: 120px; height 60px; border-color: #fff;"),
         target = "_blank",
-        href = paste0("https://www.uniprot.org/uniprotkb/", strip_terminal_specifier(UniProt()), "/entry")
+        href = paste0("https://www.uniprot.org/uniprotkb/", selectprotein()[input$proteintable_rows_selected,3], "/entry")
       )
     })
     
@@ -363,7 +372,10 @@ server <- function(input, output, session) {
     # Plot structure with SWaFi score ------------------------------------------
     output$pdb <- renderR3dmol({
       
-      pdb <- plot_pdb_with_binding_sites(UniProt(),array_object=Array_object, confidence = conf(), zoom_limits = c(5,1000))
+      pdb <- quiet(plot_pdb_with_binding_sites(UniProt(),
+                                         array_object=Array_object(), 
+                                         pthresh = conf(), 
+                                         zoom_limits = c(5,1000)))
       
       if(!is.null(input$siteTable_rows_selected)){
         # highlight selected site
@@ -376,9 +388,9 @@ server <- function(input, output, session) {
     })
     
     # Plot SWaFi trace ---------------------------------------------------------
-    selecttrace <- reactive(plot_SWaFi_trace_w_sites(array_object = Array_object, 
+    selecttrace <- reactive(plot_SWaFi_trace_w_sites(array_object = Array_object(), 
                                                      proteins=UniProt(), 
-                                                     dataset = 'FBBE2', 
+                                                     dataset = c('FBBE1','FBBE2'), 
                                                      confidence = conf(), 
                                                      nCol=2))
     
@@ -386,13 +398,14 @@ server <- function(input, output, session) {
     
     # Get binding sites --------------------------------------------------------
     sites <- reactive({
-      get_binding_sites(proteins=UniProt(),
-                        binding = T,
+      quiet(get_binding_sites(proteins=UniProt(),
+                        #binding = T,
                         confidence = conf(),
-                        array_object = Array_object)[,c(3:6,8,10)]
+                        array_object = Array_object())[,c(3:6,8,10)])  %>% 
+        dplyr::mutate(across(where(is.numeric), round, 5))
     })
     
-    # Create bingind site table ------------------------------------------------
+    # Create binding site table ------------------------------------------------
     output$siteTable = DT::renderDT(sites(),
                                        plugins = "ellipsis",
                                        selection = list(
@@ -401,6 +414,10 @@ server <- function(input, output, session) {
                                        options=list(pageLength=3, 
                                                     dom = 'tp',
                                                     columnDefs = list(
+                                                      list(
+                                                        targets = c(6),
+                                                        render = JS("$.fn.dataTable.render.ellipsis( 14, false )")
+                                                      ),
                                                       list(
                                                         targets = c(1,2),
                                                         width = '30px'
@@ -422,7 +439,7 @@ server <- function(input, output, session) {
     # Get best AH --------------------------------------------------------------
     selectedsequence <- reactive({
                             if(!is.na(activeSite())){
-                              selectedsequence <- get_best_AH(activeSite(),UniProt(), array_object = Array_object, return_all_info = F)
+                              selectedsequence <- quiet(get_best_AH(activeSite(),UniProt(), array_object = Array_object(), return_all_info = F))
                             } else {
                               selectedsequence <- 'not_selected'
                             }
@@ -447,7 +464,7 @@ server <- function(input, output, session) {
        } else {
           # plot empty graph with message
          helicalwheel <- ggplot() + 
-                    annotate(geom="text", x=0, y=0, label='No amphipathic helix found', size = unit(12, "pt")) + 
+                    annotate(geom="text", x=0, y=0, label='No amphipathic\nhelix found', size = unit(12, "pt")) + 
                     prism() + remove_x_axis() + remove_y_axis() + theme(legend.position='none') +
                     xlim(-1.5,1.5) +
                     ylim(-1.5,1.5)
