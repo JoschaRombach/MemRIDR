@@ -19,7 +19,7 @@ Instructions:
 If you want to install packages seperately use "install.packages()" to download:
 'tidyverse','berryFunctions','seqinr','stringr','data.table','viridis','bio3d',
 'ggprism','ggExtra','gridExtra','zoo','RColorBrewer','shiny','DT','shiny.fluent',
-'imola','cowplot','shiny.router','shiny.react','shinyWidgets','circlize'
+'imola','cowplot','shiny.router','shiny.react','shinyWidgets','circlize','devtools'
 
 Use "BiocManager::install()" to install: 'msa' and 'ggtree'
 
