@@ -11,4 +11,10 @@ Data page:
 Disease mapping:
 ![diseasepage](https://github.com/user-attachments/assets/581cdc06-cdde-41d2-8304-3193d3eb805e)
 
-To get a local version of the app please email joscharom@outlook.com and I will share the access token to the data with you. 
+For a local version of the app:
+1) Dowload R (v4.4.2 or newer) and RStudio (RStudio 2023.06.1+524 or newer)
+2) 
+3) Email joscharom@outlook.com with subject heading "MemRIDR access token" to recieve the access token to the data (a .json file).
+4) Download and place the .json file in the /data folder
+5) Open Run_application.R and run the script
+6) Accept downloading of dependencies from CRAN, Bioconductor and Github
