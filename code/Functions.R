@@ -203,7 +203,7 @@ search_for_disease <- function(search, keys, ClinVar){
 #-############################################################################-#
 
 Authenticate_google_drive <- function(){
-  googledrive::drive_auth(path = list.files(path = 'data', pattern = '.json', full.names = T)')
+  googledrive::drive_auth(path = list.files(path = 'data', pattern = '.json', full.names = T))
   print(drive_user())
   cat('\nCreating temporary directory\n')
   if(!'temp_dir' %in% list.files()){dir.create('temp_dir')} # test if temporary directory exists
