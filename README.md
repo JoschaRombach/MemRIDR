@@ -1,6 +1,6 @@
 MemRIDR a shiny application for easy access to data from Rombach, Nielsen et al. 2025 
 
-Application available at: 
+Application available at:  https://memridr.shinyapps.io/access/ 
 
 For a local version of the app:
 1) Dowload R (v4.4.2 or newer) and RStudio (RStudio 2023.06.1+524 or newer)
