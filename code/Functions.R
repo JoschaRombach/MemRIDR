@@ -8,114 +8,112 @@
 #-############################################################################-#
 #-########################### INSTALL PACKAGES ###############################-#
 #-############################################################################-#
-message(" Starting ...")
-message(" Loading packages ...")
 
 # Install packages from CRAN, Bioconductor and Github
-cran <- c('tidyverse','berryFunctions','seqinr','stringr','data.table',
-          'viridis','bio3d','ggprism','ggExtra','gridExtra','grid','zoo','RColorBrewer',
-          'shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react',
-          'shinyWidgets','circlize', 'visNetwork','igraph','shinycssloaders',
-          'plyr','ggnewscale','googledrive')
-
-bioconductor <- c('msa','ggtree')
-
-github_packages <- c('r3dmol','dqshiny')
-github_pages    <- c('swsoyee/r3dmol','daqana/dqshiny')
-
-# Function for installing missing packages from CRAN and Bioconductor
-install_CRAN_and_Bioconductor_packages <- function(cran,bioconductor){
-
-  cran_missing <- cran[which(!cran %in% rownames(installed.packages()))]
-  bioconductor_missing <- bioconductor[which(!bioconductor %in% rownames(installed.packages()))]
-  n_missing <- length(cran_missing)+length(bioconductor_missing)
-  message("\n-----------------------------------------------------------")
-  message(paste0(' Installing ',n_missing,' packages from CRAN and Bioconductor'))
-
-    if( n_missing > 0){
-
-    continue <- NA
-    while(!continue%in%c('y','Y','ye','YE','Ye','yes','YES','Yes','YeS','YEs','yeS','yES','n','N','no','No','NO')){
-      continue <- readline(paste0(" There are ",n_missing," packages that need to be installed - Do you want to install them? options: (yes/no) - "))
-    }
-
-    if(continue%in%c('y','Y','ye','YE','Ye','yes','YES','Yes','YeS','YEs','yeS','yES')){
-
-      if(length(cran_missing)>0){
-        install.packages(cran_missing)
-      }
-
-      if(length(bioconductor_missing)>0){
-        if (!require("BiocManager", quietly = TRUE))
-          install.packages("BiocManager")
-
-        BiocManager::install(bioconductor_missing)
-      }
-    }
-
-    cat('\n')
-
-  } else {
-    message(' All packages already installed')
-  }
-}
-
-# Install from CRAN and Bioconductor
-install_CRAN_and_Bioconductor_packages(cran,bioconductor)
-
-# Install r3dmol from Github
-
-install_github_packages <- function(github_packages, github_pages){
-
-    missing <- which(!github_packages %in% rownames(installed.packages()))
-
-    if(length(missing)>0){
-
-    continue <- NA
-    while(!continue %in% c('yes','YES','Yes','YeS','YEs','yeS','no','No','NO')){
-      continue <- readline(paste0(' Install ',paste(github_packages[missing], collapse = ' & '),' from pages ',paste(github_pages[missing], collapse = ' & '),'? note: remotes is required and will also be installed. (yes/no) : '))
-    }
-
-    if(continue%in%c('yes','YES','Yes','YeS','YEs','yeS')){
-      if(!require('remotes')){install.packages('remotes')}
-      remotes::install_github(repo = github_pages[missing], upgrade = 'never')
-    }
-
-    rm(continue)
-
-    } else {
-      message(' All packages already installed')
-    }
-   }
-
-install_github_packages(github_packages, github_pages)
-
-#-############################################################################-#
-#-########################### LOAD PACKAGES ##################################-#
-#-############################################################################-#
-
-# Function for loading packages
-load_packages <- function(packages){
-  message(" Loading packages ...")
-  for (p in packages) {
-    if (p %in% rownames(installed.packages())) {
-      suppressPackageStartupMessages(library(p, character.only=TRUE))
-    } else {
-      message(paste0(' Error: package ',p,' is not installed ... '))
-    }
-  }
-}
-
-# Load packages
-load_packages(c(cran, bioconductor, github_packages))
-
-rm(cran,
-   bioconductor,
-   github_packages,
-   github_pages,
-   install_github_packages,
-   install_CRAN_and_Bioconductor_packages,
-   load_packages)
+# cran <- c('tidyverse','berryFunctions','seqinr','stringr','data.table',
+#           'viridis','bio3d','ggprism','ggExtra','gridExtra','grid','zoo','RColorBrewer',
+#           'shiny','DT','shiny.fluent','imola','cowplot','shiny.router','shiny.react',
+#           'shinyWidgets','circlize', 'visNetwork','igraph','shinycssloaders',
+#           'plyr','ggnewscale','googledrive')
+# 
+# bioconductor <- c('msa','ggtree')
+# 
+# github_packages <- c('r3dmol','dqshiny')
+# github_pages    <- c('swsoyee/r3dmol','daqana/dqshiny')
+# 
+# # Function for installing missing packages from CRAN and Bioconductor
+# install_CRAN_and_Bioconductor_packages <- function(cran,bioconductor){
+#   
+#   cran_missing <- cran[which(!cran %in% rownames(installed.packages()))]
+#   bioconductor_missing <- bioconductor[which(!bioconductor %in% rownames(installed.packages()))]
+#   n_missing <- length(cran_missing)+length(bioconductor_missing)
+#   message("\n-----------------------------------------------------------")
+#   message(paste0(' Installing ',n_missing,' packages from CRAN and Bioconductor'))
+#   
+#     if( n_missing > 0){
+#     
+#     continue <- NA
+#     while(!continue%in%c('y','Y','ye','YE','Ye','yes','YES','Yes','YeS','YEs','yeS','yES','n','N','no','No','NO')){
+#       continue <- readline(paste0(" There are ",n_missing," packages that need to be installed - Do you want to install them? options: (yes/no) - "))
+#     }
+#     
+#     if(continue%in%c('y','Y','ye','YE','Ye','yes','YES','Yes','YeS','YEs','yeS','yES')){
+#       
+#       if(length(cran_missing)>0){
+#         install.packages(cran_missing)
+#       }
+#       
+#       if(length(bioconductor_missing)>0){
+#         if (!require("BiocManager", quietly = TRUE))
+#           install.packages("BiocManager")
+#         
+#         BiocManager::install(bioconductor_missing)
+#       }
+#     }
+#     
+#     cat('\n')
+# 
+#   } else {
+#     message(' All packages already installed')
+#   }
+# }
+# 
+# # Install from CRAN and Bioconductor
+# install_CRAN_and_Bioconductor_packages(cran,bioconductor)
+# 
+# # Install r3dmol from Github
+# 
+# install_github_packages <- function(github_packages, github_pages){
+# 
+#     missing <- which(!github_packages %in% rownames(installed.packages()))
+#     
+#     if(length(missing)>0){
+#       
+#     continue <- NA
+#     while(!continue %in% c('yes','YES','Yes','YeS','YEs','yeS','no','No','NO')){
+#       continue <- readline(paste0(' Install ',paste(github_packages[missing], collapse = ' & '),' from pages ',paste(github_pages[missing], collapse = ' & '),'? note: remotes is required and will also be installed. (yes/no) : '))
+#     }
+#     
+#     if(continue%in%c('yes','YES','Yes','YeS','YEs','yeS')){
+#       if(!require('remotes')){install.packages('remotes')}
+#       remotes::install_github(repo = github_pages[missing], upgrade = 'never')
+#     }
+#     
+#     rm(continue)
+#   
+#     } else {
+#       message(' All packages already installed')
+#     }
+#    }
+# 
+# install_github_packages(github_packages, github_pages)
+# 
+# #-############################################################################-#
+# #-########################### LOAD PACKAGES ##################################-#
+# #-############################################################################-#
+# 
+# # Function for loading packages
+# load_packages <- function(packages){
+#   message(" Loading packages ...")
+#   for (p in packages) {
+#     if (p %in% rownames(installed.packages())) {
+#       suppressPackageStartupMessages(library(p, character.only=TRUE))
+#     } else {
+#       message(paste0(' Error: package ',p,' is not installed ... '))
+#     }
+#   }
+# }
+# 
+# # Load packages
+# load_packages(c(cran, bioconductor, github_packages))
+# 
+# rm(cran, 
+#    bioconductor, 
+#    github_packages,
+#    github_pages,
+#    install_github_packages,
+#    install_CRAN_and_Bioconductor_packages, 
+#    load_packages)
 
 #-############################################################################-#
 #-############################# AESTHETICS ###################################-#
@@ -203,9 +201,9 @@ search_for_disease <- function(search, keys, ClinVar){
 #-############################################################################-#
 
 Authenticate_google_drive <- function(){
-  googledrive::drive_auth(path = 'data/winter-environs-456814-d2-f014d23cacc8.json')
+  googledrive::drive_auth(path =   list.files(path='data', pattern = '.json', full.names = T))
   print(drive_user())
-  cat('\nCreating temporary directory\n')
+  message(' Creating temporary directory')
   if(!'temp_dir' %in% list.files()){dir.create('temp_dir')} # test if temporary directory exists
 }
 
