@@ -8,51 +8,7 @@
 # old color: #0dc5c1 
 
 #-############################################################################-#
-#-############################## DEPENDENCIES ################################-#
-#-############################################################################-#
-message(" Starting ...")
-message(" Loading packages ...")
-
-#CRAN
-suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(berryFunctions))
-suppressPackageStartupMessages(library(seqinr))
-suppressPackageStartupMessages(library(stringr))
-suppressPackageStartupMessages(library(data.table))
-suppressPackageStartupMessages(library(viridis))
-suppressPackageStartupMessages(library(bio3d))
-suppressPackageStartupMessages(library(ggprism))
-suppressPackageStartupMessages(library(ggExtra))
-suppressPackageStartupMessages(library(gridExtra))
-suppressPackageStartupMessages(library(grid))
-suppressPackageStartupMessages(library(zoo))
-suppressPackageStartupMessages(library(RColorBrewer))
-suppressPackageStartupMessages(library(shiny))
-suppressPackageStartupMessages(library(DT))
-suppressPackageStartupMessages(library(shiny.fluent))
-suppressPackageStartupMessages(library(imola))
-suppressPackageStartupMessages(library(cowplot))
-suppressPackageStartupMessages(library(shiny.router))
-suppressPackageStartupMessages(library(shiny.react))
-suppressPackageStartupMessages(library(shinyWidgets))
-suppressPackageStartupMessages(library(circlize))
-suppressPackageStartupMessages(library(visNetwork))
-suppressPackageStartupMessages(library(igraph))
-suppressPackageStartupMessages(library(shinycssloaders))
-suppressPackageStartupMessages(library(plyr))
-suppressPackageStartupMessages(library(ggnewscale))
-suppressPackageStartupMessages(library(googledrive))
-
-#BIOCONDUCTOR
-suppressPackageStartupMessages(library(msa))
-suppressPackageStartupMessages(library(ggtree))
-
-#GITHUB
-suppressPackageStartupMessages(library(r3dmol))
-suppressPackageStartupMessages(library(dqshiny))
-
-#-############################################################################-#
-#-############################ SOURCE FUNCTIONS ##############################-#
+#-################### LOAD DEPENDENCIES SOURCE FUNCTIONS #####################-#
 #-############################################################################-#
 source('code/Functions.R', local = TRUE)
 
@@ -1272,11 +1228,10 @@ server <- function(input, output, session) {
     router_server()    
     
     # Stop app on window closing - remove before deploying! --------------------
-    # session$onSessionEnded(function(){
-    #   cat("Session Ended\n")
-    #   stopApp()
-    # })
-    
+    session$onSessionEnded(function(){
+      cat("Session Ended\n")
+      stopApp()
+    })
 
 }
 
