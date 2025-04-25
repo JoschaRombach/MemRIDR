@@ -1,0 +1,10 @@
+name: array_app
+title:
+username: joscharombach
+account: joscharombach
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14591963
+bundleId: 10169232
+url: https://joscharombach.shinyapps.io/array_app/
+version: 1
