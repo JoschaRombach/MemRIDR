@@ -8,7 +8,7 @@ For a local version of the app:
 2) Download this Github repository as a .zip folder and unzip in your preferred location
 3) Email joscharom@outlook.com with subject heading "MemRIDR access token" to recieve the access token to the data (a .json file).
 4) Download and place the .json file in the /data folder
-5) Open Run_application.R and run the script
+5) Open Run_application.R in RStudio and run the script
 6) Accept downloading of dependencies from CRAN, Bioconductor and Github
 
 Frontpage:
