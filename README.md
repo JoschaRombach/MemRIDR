@@ -1,4 +1,4 @@
-MemRIDR (Membrane Recruited Intrinsically Disordered Regions) 
+MemRIDR (Membrane Recruited Intrinsically Disordered Regions)
 A shiny application for easy access to data from Rombach, Nielsen et al. 2025 
 
 Application available at:  https://memridr.shinyapps.io/access/ 
