@@ -1,15 +1,6 @@
-MemRIDR (Membrane Recruited Intrinsically Disordered Regions)
-A shiny application for easy access to data from Rombach, Nielsen et al. 2025 
+MemRIDR (Membrane Recruited Intrinsically Disordered Regions) database is a shiny application for easy access to data from Rombach, Nielsen et al. 2025 
 
 Application available at:  https://memridr.shinyapps.io/access/ 
-
-For a local version of the app:
-1) Dowload R (v4.4.2 or newer) and RStudio (RStudio 2023.06.1+524 or newer)
-2) Download this Github repository as a .zip folder and unzip in your preferred location
-3) Email joscharom@outlook.com with subject heading "MemRIDR access token" to recieve the access token to the data (a .json file).
-4) Download and place the .json file in the /data folder
-5) Open Run_application.R in RStudio and run the script
-6) Accept downloading of dependencies from CRAN, Bioconductor and Github
 
 Frontpage:
 ![frontpage](https://github.com/user-attachments/assets/f43cbfa0-4651-4f7b-b779-170ac8f84ca4)
@@ -21,3 +12,13 @@ Data page:
 
 Disease mapping:
 ![diseasepage](https://github.com/user-attachments/assets/581cdc06-cdde-41d2-8304-3193d3eb805e)
+
+---------------------------------------------------------------------------
+
+For a local version of the app:
+1) Dowload R (v4.4.2 or newer) and RStudio (RStudio 2023.06.1+524 or newer)
+2) Download this Github repository as a .zip folder and unzip in your preferred location
+3) Email joscharom@outlook.com with subject heading "MemRIDR access token" to recieve the access token to the data (a .json file).
+4) Download and place the .json file in the /data folder
+5) Open Run_application.R in RStudio and run the script
+6) Accept downloading of dependencies from CRAN, Bioconductor and Github
