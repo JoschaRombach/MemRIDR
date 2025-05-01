@@ -917,19 +917,24 @@ server <- function(input, output, session) {
                                        selection = list(
                                          mode='multiple'
                                        ),
-                                       options=list(pageLength=6, 
+                                        options=list(pageLength=6, 
                                                     dom = 'tp',
                                                     columnDefs = list(
                                                       list(
                                                         targets = c(6),
-                                                        render = JS("$.fn.dataTable.render.ellipsis( 14, false )")
+                                                        render = JS("$.fn.dataTable.render.ellipsis( 50, false )")
                                                       ),
                                                       list(
-                                                        targets = c(1,2),
+                                                        targets = c(1,2,5),
                                                         width = '30px'
+                                                      ),
+                                                      list(
+                                                        targets = c(3,4),
+                                                        width = '60px'
                                                       )
                                                     )
-                                       )
+                                       ), 
+                                       colnames=c('Start','End','AUC','p-value','Length','Sequence')
       )
     })
     
