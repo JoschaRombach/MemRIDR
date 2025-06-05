@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiny App Link</title>
+    <style>
+        /* Ensure the body takes up the full screen */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Apply white background and position image */
+        body {
+            background-color: white;
+            background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png'); /* Raw GitHub image URL */
+            background-size: 30%; /* Image size */
+            background-position: 15% center; /* Image positioned left-center */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Container for the button */
+        .button-container {
+            position: absolute;
+            bottom: 50%; /* Adjust the position closer to the center */
+            text-align: center;
+        }
+
+        /* Button styling */
+        .shiny-button {
+            padding: 20px 40px;
+            font-size: 20px;
+            background-color: #4682B4; /* Semi-transparent blue */
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .shiny-button:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        /* Footer with logo */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        footer img {
+            width: 50px; /* Adjust logo size */
+            height: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        footer a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #4682B4; /* Steel blue */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button container for the shiny app link -->
+    <div class="button-container">
+        <a href="https://memridr.shinyapps.io/access/" class="shiny-button">
+            Access MemRIDRdb
+        </a>
+    </div>
+
+    <!-- Footer with University of Copenhagen logo -->
+    <footer>
+<a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
+              <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" style="margin-left: 70px; width: 300px; cursor:pointer;">
+            </a>
+          </div>
+          <div>If you use this database in a publication, please cite: Rombach, J., Nielsen, T. T. E., .....
+	</div>
+
+    </footer>
+
+</body>
+</html>
