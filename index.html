@@ -12,33 +12,68 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Apply white background and position image */
+        /* Apply white background and position images */
         body {
             background-color: white;
-            background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png'); /* Raw GitHub image URL */
-            background-size: 30%; /* Image size */
-            background-position: 15% center; /* Image positioned left-center */
-            background-repeat: no-repeat; /* Prevent image repetition */
             display: flex;
-            justify-content: right;
+            justify-content: center;
             align-items: center;
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .left-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
+            background-size: 40%;
+            background-position: right center;
+	    background-position: 70% center; /* Image positioned left-center */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            display: flex;
+        }
+
+        .right-bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/YIPF6.png');
+            background-size: 40%;
+            background-position: left center;
+	    background-position: 30% center; /* Image positioned left-center */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            display: flex;
         }
 
         /* Container for the button */
         .button-container {
             position: absolute;
-            bottom: 50%; /* Adjust the position closer to the center */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
+            z-index: 1;
         }
 
         /* Button styling */
         .shiny-button {
+            display: block;
+            margin: 10px auto;
             padding: 20px 40px;
             font-size: 20px;
-            background-color: #4682B4; /* Semi-transparent blue */
             color: white;
             border: none;
             border-radius: 40px;
@@ -47,17 +82,30 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .shiny-button:hover {
+ 	.shiny-button-primary {
+            background-color: #4682B4;
+        }
+
+        .shiny-button-primary:hover {
             background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        .shiny-button-secondary {
+            background-color: #D3D3D3;
+        }
+
+        .shiny-button-secondary:hover {
+            background-color: rgba(128, 128, 128, 0.8);
         }
 
         /* Footer with logo */
         footer {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            bottom: 15%;
+            left: 23%;
             display: flex;
             align-items: center;
+            z-index: 1;
         }
 
         footer img {
@@ -75,24 +123,26 @@
     </style>
 </head>
 <body>
-
-    <!-- Button container for the shiny app link -->
-    <div class="button-container">
-        <a href="https://memridr.shinyapps.io/access/" class="shiny-button">
-            Access MemRIDRdb
-        </a>
-    </div>
-
-    <!-- Footer with University of Copenhagen logo -->
-    <footer>
-<a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
-              <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" style="margin-left: 70px; width: 300px; cursor:pointer;">
+    <div class="container">
+        <div class="left-bg"></div>
+        <div class="right-bg"></div>
+        <!-- Button container for the shiny app link -->
+        <div class="button-container">
+            <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">
+                MemRIDRdb shinyapps.io
             </a>
-          </div>
-          <div>If you use this database in a publication, please cite: Rombach, J., Nielsen, T. T. E., .....
-	</div>
+            <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary">
+                GitHub Repository
+            </a>
+        </div>
 
-    </footer>
-
+        <!-- Footer with University of Copenhagen logo -->
+        <footer>
+            <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
+                <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" style="margin-left: 70px; width: 300px; cursor:pointer;">
+            </a>
+            <div>If you use this database in a publication, please cite: Rombach, J., Nielsen, T. T. E., .....</div>
+        </footer>
+    </div>
 </body>
 </html>
