@@ -1,200 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="MemRIDR db is a specialized resource cataloging membrane-binding sites within intrinsically disordered regions (IDRs) of human transmembrane proteins. The database supports studies on amphipathic helices, protein-lipid interactions, membrane recruitment of IDRs, protein trafficking, CPP-like motifs, and more in disordered segments.">
-  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, protein-lipid interactions, amphipathic helices, cell-penetrating peptides, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
-  <meta property="og:title" content="MemRIDR db – Membrane-Recruited IDRs in Human TMPs">
-  <meta property="og:description" content="Database of membrane-binding sites in intrinsically disordered regions (IDRs) of human transmembrane proteins.">
-  <meta property="og:url" content="https://github.com/JoschaRombach/MemRIDR">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <title>MemRIDR db - Membrane-Recruited IDRs in Human Transmembrane Proteins</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background-color: white;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .left-bg,
-    .right-bg {
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      background-size: 60%;
-      background-repeat: no-repeat;
-      z-index: 0;
-    }
-
-    .left-bg {
-      left: 0;
-      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
-      background-position: 50% center;
-    }
-
-    .right-bg {
-      right: 0;
-      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/YIPF6.png');
-      background-position: 50% center;
-    }
-
-    .button-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1;
-    }
-
-    .shiny-button {
-      display: block;
-      margin: 10px auto;
-      padding: 20px 40px;
-      font-size: 20px;
-      color: white;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .shiny-button-primary {
-      background-color: #4682B4;
-    }
-
-    .shiny-button-primary:hover {
-      background-color: rgba(0, 86, 179, 0.8);
-    }
-
-    .shiny-button-secondary {
-      background-color: #D3D3D3;
-      color: black;
-    }
-
-    .shiny-button-secondary:hover {
-      background-color: rgba(128, 128, 128, 0.8);
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 1;
-      padding: 0 20px;
-    }
-
-    footer img {
-      width: 200px;
-      height: auto;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    footer div {
-      font-size: 14px;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .mobile-only {
-      display: none;
-    }
-
-    /* ---------- MOBILE STYLES ---------- */
-    @media (max-width: 1000px) {
-      body {
-        height: auto;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .container {
-        position: static;
-        height: auto;
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .left-bg,
-      .right-bg {
-        display: none !important;
-      }
-
-      .mobile-only {
-        display: block;
-        max-width: 80%;
-        height: auto;
-        margin-bottom: 20px;
-      }
-
-      .button-container {
-        position: static;
-        transform: none;
-        margin-bottom: 30px;
-      }
-
-      footer {
-        position: static;
-        transform: none;
-        margin-top: 20px;
-      }
-
-      footer img {
-        width: 150px;
-      }
-
-      .shiny-button {
-        font-size: 18px;
-        padding: 15px 30px;
-      }
-    }
-  </style>
-</head>
 <body>
   <div class="container">
     <!-- Desktop Background Images -->
     <div class="left-bg"></div>
     <div class="right-bg"></div>
 
+    <!-- Accessible H1 for SEO and screen readers -->
+    <h1 style="position: absolute; left: -9999px;">
+      MemRIDR db: Membrane-Recruited Intrinsically Disordered Regions in Human Transmembrane Proteins
+    </h1>
+
     <!-- Mobile-only centered image -->
     <img class="mobile-only" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="Mobile ATP2B2 Image">
 
     <div class="button-container">
+      <h2>Access the MemRIDR Database</h2>
       <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">
         MemRIDRdb shinyapps.io
       </a>
+
+      <h2>Explore the Codebase</h2>
       <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">
         GitHub Repository
       </a>
     </div>
 
     <footer>
+      <h2 style="font-size: 16px;">Citation & Lab Information</h2>
       <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
         <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
       </a>
@@ -202,4 +33,3 @@
     </footer>
   </div>
 </body>
-</html>
