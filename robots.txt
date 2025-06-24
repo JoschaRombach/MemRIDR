@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://github.com/JoschaRombach/MemRIDR/sitemap.xml
+Sitemap: https://joscharombach.github.io/MemRIDR/sitemap.xml
