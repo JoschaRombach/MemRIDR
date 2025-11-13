@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="MemRIDR db is a specialized resource cataloging membrane-binding sites within intrinsically disordered regions (IDRs) of human transmembrane proteins.">
-  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, protein-lipid interactions, amphipathic helices, cell-penetrating peptides, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
+  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, amphipathic helices, cell-penetrating peptides, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
   
   <meta property="og:title" content="MemRIDR db – Membrane-Recruited IDRs in Human TMPs">
   <meta property="og:description" content="Database of membrane-binding sites in intrinsically disordered regions (IDRs) of human transmembrane proteins.">
@@ -22,11 +22,12 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
+      height: 100%;
+      width: 100%;
     }
 
     body {
       background-color: white;
-      height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -38,6 +39,9 @@
       width: 100%;
       height: 100%;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* stack content vertically for desktop */
     }
 
     /* LEFT BG */
@@ -65,7 +69,7 @@
       color: #222;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* center vertically */
+      justify-content: center;
       align-items: center;
       padding: 40px 60px;
       box-sizing: border-box;
@@ -74,7 +78,6 @@
     }
 
     .right-bg-content {
-      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -99,14 +102,11 @@
       text-align: justify;
     }
 
-    /* Desktop buttons: center in viewport */
+    /* Buttons now part of flow for desktop */
     .button-container {
-      position: fixed; /* fixed relative to viewport */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
       text-align: center;
+      margin-bottom: 30px;
+      z-index: 2;
     }
 
     .shiny-button {
@@ -154,8 +154,8 @@
     /* MOBILE STYLES */
     @media (max-width: 1000px) {
       body {
-        height: auto;
         overflow: auto;
+        height: auto;
       }
 
       .container {
@@ -168,9 +168,10 @@
       }
 
       .button-container {
-        position: static; /* flow in document */
+        position: static;
         transform: none;
-        margin: 10px 0;
+        margin: 15px 0;
+        order: 2; /* after image */
       }
 
       .left-bg {
@@ -188,13 +189,8 @@
       }
 
       .right-bg-content {
-        order: 3; /* text below buttons */
+        order: 3; /* text after buttons */
         padding: 10px 0;
-      }
-
-      .button-container {
-        order: 2; /* buttons after image */
-        margin: 15px 0;
       }
 
       .mobile-image {
@@ -211,7 +207,7 @@
       }
 
       .ucph-logo img {
-        width: 250px; /* smaller logo */
+        width: 150px; /* smaller logo for mobile */
       }
 
       .right-bg h2 {
@@ -271,6 +267,3 @@
   </div>
 </body>
 </html>
-
-
-
