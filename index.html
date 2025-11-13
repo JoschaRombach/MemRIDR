@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="MemRIDR db is a specialized resource cataloging membrane-binding sites within intrinsically disordered regions (IDRs) of human transmembrane proteins.">
-  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, protein-lipid interactions, amphipathic helices, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
-  <title>MemRIDR db - Membrane-Recruited IDRs in Human Transmembrane Proteins</title>
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>MemRIDR db - Membrane-Recruited IDRs</title>
 
   <style>
     html, body {
@@ -23,38 +19,48 @@
     }
 
     .container {
-      display: flex;
+      position: relative;
       width: 100%;
       height: 100%;
-      position: relative;
     }
 
-    /* Left panel */
-    .left-bg {
-      width: 50%;
-      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-
-    /* Right panel */
+    /* Left and right background halves */
+    .left-bg,
     .right-bg {
+      position: absolute;
+      top: 0;
       width: 50%;
+      height: 100%;
+      background-size: 60%;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    .left-bg {
+      left: 0;
+      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
+      background-position: 50% center;
+    }
+
+    /* Right side content */
+    .right-bg {
+      right: 0;
+      padding: 60px;
+      box-sizing: border-box;
       background-color: #f4f6fa;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 60px;
-      box-sizing: border-box;
-      text-align: center;
+      overflow-y: auto;
+      text-align: justify;
+      color: #222;
     }
 
-    /* Text scaling */
     .right-bg h2 {
       font-size: clamp(20px, 2vw + 1rem, 26px);
       color: #2e5c91;
+      text-align: center;
       margin-bottom: 25px;
       line-height: 1.3;
     }
@@ -62,18 +68,36 @@
     .right-bg p {
       font-size: clamp(14px, 1.5vw + 0.5rem, 18px);
       line-height: 1.6;
-      margin-bottom: 30px;
-      text-align: justify;
-      max-width: 550px;
+      max-width: 500px;
+      margin: 0 auto 30px auto;
     }
 
-    /* Buttons */
+    .right-bg a {
+      color: #4682B4;
+      text-decoration: none;
+    }
+
+    .right-bg a:hover {
+      text-decoration: underline;
+    }
+
+    .right-bg img {
+      width: 300px;
+      height: auto;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    /* Buttons centered on desktop */
     .button-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 15px;
-      margin-bottom: 30px;
+      z-index: 1;
     }
 
     .shiny-button {
@@ -85,84 +109,141 @@
       border-radius: 40px;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .shiny-button-primary { background-color: #4682B4; }
-    .shiny-button-primary:hover { background-color: rgba(0,86,179,0.8); }
-
-    .shiny-button-secondary { background-color: #D3D3D3; color: black; }
-    .shiny-button-secondary:hover { background-color: rgba(128,128,128,0.8); }
-
-    /* Logos */
-    .ucph-logo {
-      width: 300px;
-      height: auto;
-      cursor: pointer;
+    .shiny-button-primary {
+      background-color: #4682B4;
     }
 
-    /* Mobile layout */
+    .shiny-button-primary:hover {
+      background-color: rgba(0, 86, 179, 0.8);
+    }
+
+    .shiny-button-secondary {
+      background-color: #D3D3D3;
+      color: black;
+    }
+
+    .shiny-button-secondary:hover {
+      background-color: rgba(128, 128, 128, 0.8);
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    /* ---------- MOBILE STYLES ---------- */
     @media (max-width: 1000px) {
-      body { height: auto; overflow: auto; }
+      body {
+        height: auto;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
 
       .container {
-        flex-direction: column;
+        position: static;
         height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        padding: 20px;
       }
 
-      .left-bg { display: none; }
+      .left-bg {
+        display: none; /* hide left image on mobile */
+      }
 
       .right-bg {
+        position: static;
         width: 90%;
         padding: 20px;
+        background-color: transparent;
+        overflow: visible;
         align-items: center;
       }
 
-      /* Reorder items */
-      .mobile-image { order: 1; width: 80%; margin-bottom: 20px; }
-      .button-container { order: 2; width: 100%; }
-      .right-bg-content { order: 3; }
-      .ucph-logo { order: 4; margin-top: 20px; width: 200px; }
+      .right-bg h2 {
+        font-size: 22px;
+        text-align: center;
+      }
+
+      .right-bg p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0 20px 0;
+      }
+
+      .mobile-only {
+        display: block;
+        width: 80%;
+        margin-bottom: 20px;
+        order: 1; /* First in order */
+      }
+
+      .button-container {
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
+        order: 2; /* Second */
+      }
+
+      .right-bg-content {
+        order: 3; /* Third */
+      }
+
+      .ucph-logo {
+        width: 200px;
+        margin-top: 20px;
+        order: 4; /* Fourth */
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
+    <!-- Invisible semantic headings for SEO -->
+    <div style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+      <h1>MemRIDR db: Membrane-Recruited Intrinsically Disordered Regions in Human Transmembrane Proteins</h1>
+      <h2>Database of membrane-binding sites in intrinsically disordered regions of human transmembrane proteins</h2>
+    </div>
+
+    <!-- Backgrounds -->
     <div class="left-bg"></div>
 
+    <!-- Right side content -->
     <div class="right-bg">
-      <!-- Mobile first image -->
-      <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="ATP2B2 Image" class="mobile-image">
+      <h2>MemRIDR db – Membrane-Recruited Intrinsically Disordered Regions</h2>
+      <p class="right-bg-content">
+        Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
+        Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
+        regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
+        particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
+        to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
+        <strong>MemRIDR db</strong> (Membrane Recruited Intrinsically Disordered Regions), we provide data access and a 
+        basic analysis tool, which we hope will help the community in discovering new unconventional structural or 
+        regulatory mechanisms in TMPs. For more information see our publication at 
+        <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
+      </p>
+      <a class="ucph-logo" href="https://in.ku.dk/research/madsen-lab/" target="_blank">
+        <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
+      </a>
+    </div>
 
-      <!-- Buttons -->
-      <div class="button-container">
-        <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">Go to MemRIDRdb</a>
-        <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">GitHub Repository</a>
-      </div>
+    <!-- Mobile-only image -->
+    <img class="mobile-only" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="Mobile ATP2B2 Image">
 
-      <!-- Right panel text -->
-      <div class="right-bg-content">
-        <h2>MemRIDR db – Membrane-Recruited Intrinsically Disordered Regions</h2>
-        <p>
-          Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
-          Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
-          regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
-          particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
-          to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
-          <strong>MemRIDR db</strong> (Membrane Recruited Intrinsically Disordered Regions), we provide data access and a 
-          basic analysis tool, which we hope will help the community in discovering new unconventional structural or 
-          regulatory mechanisms in TMPs. For more information see our publication at 
-          <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
-        </p>
-      </div>
-
-      <!-- UCPH Logo -->
-      <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
-        <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo" class="ucph-logo">
+    <!-- Buttons -->
+    <div class="button-container">
+      <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">
+        Go to MemRIDRdb
+      </a>
+      <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">
+        GitHub Repository
       </a>
     </div>
 
