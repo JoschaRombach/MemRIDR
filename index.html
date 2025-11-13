@@ -75,10 +75,37 @@
       background-position: 50% center;
     }
 
+        /* Right side text block */
     .right-bg {
+      position: absolute;
+      top: 0;
       right: 0;
-      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/YIPF6.png');
-      background-position: 50% center;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f6fa;
+      color: #222;
+      text-align: justify;
+      padding: 60px;
+      box-sizing: border-box;
+      z-index: 0;
+    }
+
+    .right-bg p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 550px;
+    }
+
+    .right-bg a {
+      color: #4682B4;
+      text-decoration: none;
+    }
+
+    .right-bg a:hover {
+      text-decoration: underline;
     }
 
     .button-container {
@@ -215,7 +242,21 @@
     
     <!-- Desktop Background Images -->
     <div class="left-bg"></div>
-    <div class="right-bg"></div>
+
+        <!-- Right side descriptive text -->
+    <div class="right-bg">
+      <p>
+        Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
+        Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
+        regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
+        particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
+        to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
+        <strong>MemRIDR db</strong> (Membrane Recruited Intrinsically Disordered Regions), we provide data access and a 
+        basic analysis tool, which we hope will help the community in discovering new unconventional structural or 
+        regulatory mechanisms in TMPs. For more information see our publication at 
+        <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
+      </p>
+    </div>
 
     <!-- Mobile-only centered image -->
     <img class="mobile-only" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="Mobile ATP2B2 Image">
@@ -238,3 +279,4 @@
   </div>
 </body>
 </html>
+
