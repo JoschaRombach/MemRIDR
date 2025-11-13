@@ -41,14 +41,19 @@
       overflow: visible; /* allow fixed buttons to display */
     }
     
-    /* Desktop buttons: center in viewport */
+    /* Desktop buttons: center in viewport and clickable */
     .button-container {
-      position: fixed;
+      position: fixed;          /* stay in the center */
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 10;
+      z-index: 1000;            /* VERY high, above all other elements */
       text-align: center;
+    }
+    
+    /* Ensure body and container don’t clip the buttons */
+    body, .container {
+      overflow: visible;
     }
 
     /* LEFT BG */
@@ -286,6 +291,7 @@
   </div>
 </body>
 </html>
+
 
 
 
