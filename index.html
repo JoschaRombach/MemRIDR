@@ -75,7 +75,7 @@
       background-position: 50% center;
     }
 
-        /* Right side text block */
+         /* Right side text block with title */
     .right-bg {
       position: absolute;
       top: 0;
@@ -83,7 +83,7 @@
       width: 50%;
       height: 100%;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
       background-color: #f4f6fa;
       color: #222;
@@ -93,10 +93,19 @@
       z-index: 0;
     }
 
+    .right-bg h2 {
+      font-size: 26px;
+      color: #2e5c91;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+
     .right-bg p {
       font-size: 18px;
       line-height: 1.6;
       max-width: 550px;
+      margin: 0 auto;
     }
 
     .right-bg a {
@@ -108,6 +117,13 @@
       text-decoration: underline;
     }
 
+    .right-bg img {
+      width: 180px;
+      height: auto;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    
     .button-container {
       position: absolute;
       top: 50%;
@@ -257,6 +273,9 @@
         regulatory mechanisms in TMPs. For more information see our publication at 
         <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
       </p>
+      <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
+        <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
+      </a>
     </div>
 
     <!-- Mobile-only centered image -->
@@ -270,13 +289,9 @@
         GitHub Repository
       </a>
     </div>
-
-    <footer>
-      <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
-        <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
-    </footer>
   </div>
 </body>
 </html>
+
 
 
