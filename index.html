@@ -104,9 +104,12 @@
 
     /* Buttons now part of flow for desktop */
     .button-container {
+      position: fixed;        /* center in viewport */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;            /* above backgrounds and text */
       text-align: center;
-      margin-bottom: 30px;
-      z-index: 2;
     }
 
     .shiny-button {
@@ -267,3 +270,4 @@
   </div>
 </body>
 </html>
+
