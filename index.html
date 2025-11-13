@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="MemRIDR db is a specialized resource cataloging membrane-binding sites within intrinsically disordered regions (IDRs) of human transmembrane proteins.">
-  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, amphipathic helices, cell-penetrating peptides, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
+  <meta name="keywords" content="intrinsically disordered regions, IDRs, transmembrane proteins, membrane interactions, protein-lipid interactions, amphipathic helices, cell-penetrating peptides, CPP, liposomes, peptide array, membrane binding, protein trafficking, bioinformatics, database">
   
   <meta property="og:title" content="MemRIDR db – Membrane-Recruited IDRs in Human TMPs">
   <meta property="og:description" content="Database of membrane-binding sites in intrinsically disordered regions (IDRs) of human transmembrane proteins.">
@@ -23,7 +23,6 @@
       padding: 0;
       font-family: Arial, sans-serif;
       height: 100%;
-      width: 100%;
     }
 
     body {
@@ -39,9 +38,6 @@
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column; /* stack content vertically for desktop */
     }
 
     /* LEFT BG */
@@ -78,13 +74,9 @@
     }
 
     .right-bg-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       max-width: 550px;
       width: 100%;
-      overflow: hidden;
+      text-align: justify;
     }
 
     .right-bg h2 {
@@ -99,16 +91,19 @@
       font-size: clamp(14px, 1.5vw, 18px);
       line-height: 1.6;
       margin-bottom: 30px;
-      text-align: justify;
     }
 
-    /* Buttons now part of flow for desktop */
+    /* Centered buttons */
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 50vh;
+      z-index: 2;
+    }
+
     .button-container {
-      position: fixed;        /* center in viewport */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;            /* above backgrounds and text */
       text-align: center;
     }
 
@@ -157,8 +152,8 @@
     /* MOBILE STYLES */
     @media (max-width: 1000px) {
       body {
-        overflow: auto;
         height: auto;
+        overflow: auto;
       }
 
       .container {
@@ -168,13 +163,6 @@
         flex-direction: column;
         align-items: center;
         padding: 20px;
-      }
-
-      .button-container {
-        position: static;
-        transform: none;
-        margin: 15px 0;
-        order: 2; /* after image */
       }
 
       .left-bg {
@@ -191,9 +179,18 @@
         flex-direction: column;
       }
 
+      .button-wrapper {
+        min-height: auto;
+      }
+
       .right-bg-content {
-        order: 3; /* text after buttons */
+        order: 3; /* text below buttons */
         padding: 10px 0;
+      }
+
+      .button-wrapper {
+        order: 2; /* buttons after image */
+        margin: 15px 0;
       }
 
       .mobile-image {
@@ -210,7 +207,7 @@
       }
 
       .ucph-logo img {
-        width: 150px; /* smaller logo for mobile */
+        width: 200px; /* smaller logo */
       }
 
       .right-bg h2 {
@@ -240,10 +237,12 @@
       <!-- Mobile image -->
       <img class="mobile-image" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="ATP2B2">
 
-      <!-- Buttons -->
-      <div class="button-container">
-        <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">Go to MemRIDRdb</a>
-        <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">GitHub Repository</a>
+      <!-- Centered buttons -->
+      <div class="button-wrapper">
+        <div class="button-container">
+          <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">Go to MemRIDRdb</a>
+          <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">GitHub Repository</a>
+        </div>
       </div>
 
       <!-- Text Content -->
@@ -270,4 +269,3 @@
   </div>
 </body>
 </html>
-
