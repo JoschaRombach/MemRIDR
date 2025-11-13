@@ -99,12 +99,14 @@
       text-align: justify;
     }
 
+    /* Desktop buttons: center in viewport */
     .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 0;
+      position: fixed; /* fixed relative to viewport */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 2;
+      text-align: center;
     }
 
     .shiny-button {
@@ -163,6 +165,12 @@
         flex-direction: column;
         align-items: center;
         padding: 20px;
+      }
+
+      .button-container {
+        position: static; /* flow in document */
+        transform: none;
+        margin: 10px 0;
       }
 
       .left-bg {
@@ -263,5 +271,6 @@
   </div>
 </body>
 </html>
+
 
 
