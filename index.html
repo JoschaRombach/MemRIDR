@@ -1,271 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MemRIDR db - Membrane-Recruited IDRs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MemRIDR db - Membrane-Recruited IDRs in Human Transmembrane Proteins</title>
 
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-
-  body {
-    background-color: white;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Desktop Backgrounds */
-  .left-bg,
-  .right-bg {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: 0;
-  }
-
-  .left-bg {
-    left: 0;
-    background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: 50% center;
-  }
-
-  .right-bg {
-    right: 0;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f6fa;
-    padding: 60px;
-    box-sizing: border-box;
-    color: #222;
-    text-align: justify;
-  }
-
-  .right-bg h2 {
-    font-size: 28px;
-    color: #2e5c91;
-    text-align: center;
-    margin-bottom: 25px;
-    line-height: 1.3;
-  }
-
-  .right-bg p {
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 500px;
-    margin: 0 auto 30px auto;
-  }
-
-  .right-bg a {
-    color: #4682B4;
-    text-decoration: none;
-  }
-
-  .right-bg a:hover {
-    text-decoration: underline;
-  }
-
-  .right-bg img {
-    width: 300px;
-    height: auto;
-    margin-top: 15px;
-    cursor: pointer;
-  }
-
-  /* Buttons */
-  .button-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1;
-  }
-
-  .shiny-button {
-    display: block;
-    margin: 10px auto;
-    padding: 20px 40px;
-    font-size: 20px;
-    color: white;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .shiny-button-primary {
-    background-color: #4682B4;
-  }
-
-  .shiny-button-primary:hover {
-    background-color: rgba(0, 86, 179, 0.8);
-  }
-
-  .shiny-button-secondary {
-    background-color: #D3D3D3;
-    color: black;
-  }
-
-  .shiny-button-secondary:hover {
-    background-color: rgba(128, 128, 128, 0.8);
-  }
-
-  /* ---------- MOBILE STYLES ---------- */
-  @media (max-width: 1000px) {
-    body {
-      height: auto;
-      overflow: auto;
-      padding: 20px;
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
-    .left-bg, .right-bg {
-      display: none;
+    body {
+      background-color: white;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .container {
-      position: static;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Desktop backgrounds */
+    .left-bg,
+    .right-bg {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .left-bg {
+      left: 0;
+      background-image: url('https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .right-bg {
+      right: 0;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      width: 100%;
+      background-color: #f4f6fa;
+      padding: 60px;
+      box-sizing: border-box;
+      color: #222;
+      text-align: justify;
+      z-index: 0;
     }
 
-    .mobile-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
+    .right-bg-content {
+      max-width: 500px;
     }
 
-    /* Image first */
-    .mobile-only {
-      display: block;
-      width: 80%;
-      margin-bottom: 20px;
-      order: 1;
+    .right-bg h2 {
+      font-size: 26px;
+      color: #2e5c91;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.3;
     }
 
-    /* Buttons second */
+    .right-bg p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .right-bg a {
+      color: #4682B4;
+      text-decoration: none;
+    }
+
+    .right-bg a:hover {
+      text-decoration: underline;
+    }
+
+    .right-bg img {
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
     .button-container {
-      order: 2;
-      position: static;
-      transform: none;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
-      width: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
     }
 
     .shiny-button {
-      font-size: 18px;
-      padding: 15px 30px;
+      display: block;
+      margin: 10px auto;
+      padding: 20px 40px;
+      font-size: 20px;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Text third */
-    .right-bg-content {
-      order: 3;
-      width: 90%;
-      text-align: justify;
+    .shiny-button-primary {
+      background-color: #4682B4;
     }
 
-    .right-bg-content h2 {
-      font-size: 22px;
-      text-align: center;
-      margin-bottom: 15px;
+    .shiny-button-primary:hover {
+      background-color: rgba(0, 86, 179, 0.8);
     }
 
-    .right-bg-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-      line-height: 1.5;
+    .shiny-button-secondary {
+      background-color: #D3D3D3;
+      color: black;
     }
 
-    /* UCPH Logo last */
-    .ucph-logo {
-      order: 4;
-      width: 200px;
-      margin-top: 20px;
+    .shiny-button-secondary:hover {
+      background-color: rgba(128, 128, 128, 0.8);
     }
-  }
-</style>
+
+    /* Hide mobile-only elements by default */
+    .mobile-only {
+      display: none;
+    }
+
+    /* -------- MOBILE STYLES -------- */
+    @media (max-width: 1000px) {
+      body {
+        height: auto;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        position: static;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .left-bg {
+        display: none; /* hide left-bg on mobile */
+      }
+
+      .right-bg {
+        position: static;
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        padding: 20px 10px;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .mobile-only {
+        display: block;
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .button-container {
+        order: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: none;
+        position: static;
+        margin-bottom: 20px;
+      }
+
+      .shiny-button {
+        font-size: 18px;
+        padding: 15px 30px;
+      }
+
+      .right-bg-content {
+        order: 3;
+        font-size: 16px;
+        text-align: justify;
+        max-width: 100%;
+      }
+
+      .ucph-logo {
+        order: 4;
+        margin-top: 10px;
+      }
+
+      .ucph-logo img {
+        width: 120px;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
-  <!-- Desktop backgrounds -->
-  <div class="left-bg"></div>
-  <div class="right-bg">
-    <h2>MemRIDR db – Membrane-Recruited Intrinsically Disordered Regions</h2>
-    <p>
-      Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
-      Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
-      regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
-      particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
-      to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
-      <strong>MemRIDR db</strong> (Membrane Recruited Intrinsically Disordered Regions), we provide data access and a 
-      basic analysis tool, which we hope will help the community in discovering new unconventional structural or 
-      regulatory mechanisms in TMPs. For more information see our publication at 
-      <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
-    </p>
-    <a href="https://in.ku.dk/research/madsen-lab/" target="_blank">
-      <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
-    </a>
-  </div>
+    <!-- Desktop left image -->
+    <div class="left-bg"></div>
 
-  <!-- Mobile wrapper -->
-  <div class="mobile-wrapper">
+    <!-- Right side content -->
+    <div class="right-bg">
 
-    <!-- Image -->
-    <img class="mobile-only" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="Mobile ATP2B2 Image">
+      <!-- Mobile-first image -->
+      <img class="mobile-only" src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/ATP2B2.png" alt="Mobile ATP2B2 Image">
 
-    <!-- Buttons -->
-    <div class="button-container">
-      <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">
-        Go to MemRIDRdb
-      </a>
-      <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">
-        GitHub Repository
+      <!-- Buttons -->
+      <div class="button-container">
+        <a href="https://memridr.shinyapps.io/access/" class="shiny-button shiny-button-primary">
+          Go to MemRIDRdb
+        </a>
+        <a href="https://github.com/JoschaRombach/MemRIDR/tree/main" class="shiny-button shiny-button-secondary" target="_blank">
+          GitHub Repository
+        </a>
+      </div>
+
+      <!-- Text content -->
+      <div class="right-bg-content">
+        <h2>MemRIDR db – Membrane-Recruited Intrinsically Disordered Regions</h2>
+        <p>
+          Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
+          Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
+          regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
+          particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
+          to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
+          <strong>MemRIDR db</strong> (Membrane Recruited Intrinsically Disordered Regions), we provide data access and a 
+          basic analysis tool, which we hope will help the community in discovering new unconventional structural or 
+          regulatory mechanisms in TMPs. For more information see our publication at 
+          <a href="https://doi.org/10.1101/2025.08.15.670465" target="_blank">doi: 10.1101/2025.08.15.670465</a>.
+        </p>
+      </div>
+
+      <!-- UCPH logo -->
+      <a href="https://in.ku.dk/research/madsen-lab/" target="_blank" class="ucph-logo">
+        <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
       </a>
     </div>
-
-    <!-- Text -->
-    <div class="right-bg-content">
-      <h2>MemRIDR db – Membrane-Recruited Intrinsically Disordered Regions</h2>
-      <p>
-        Transmembrane proteins (TMPs) serve crucial functions including receptor-, transporter- and channel-activity. 
-        Besides our in-depth understanding of their transmembrane domains, TMPs house extensive intrinsically disordered 
-        regions (IDRs) whose functions remain largely unknown. IDR function is highly dependent on context, a trait 
-        particularly relevant for IDRs anchored to membranes. Here, we used peptide arrays and fluorescent liposomes 
-        to create a proteome-wide map of membrane-interacting regions in IDRs of all human TMPs. With 
-        <strong>MemRIDR db</strong>, we provide data access and a basic analysis tool for the community.
-      </p>
-    </div>
-
-    <!-- UCPH Logo -->
-    <a class="ucph-logo" href="https://in.ku.dk/research/madsen-lab/" target="_blank">
-      <img src="https://raw.githubusercontent.com/JoschaRombach/MemRIDR/main/www/UCPH_logo.png" alt="UCPH Logo">
-    </a>
-
   </div>
-</div>
 </body>
 </html>
