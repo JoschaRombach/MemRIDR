@@ -76,23 +76,23 @@
     }
 
 /* Right side text block with title and logo */
-    .right-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #f4f6fa;
-      color: #222;
-      text-align: justify;
-      padding: 60px;
-      box-sizing: border-box;
-      z-index: 0;
-    }
+  .right-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;   /* align text toward the inner side */
+    background-color: #f4f6fa;
+    color: #222;
+    text-align: justify;
+    padding: 40px 60px 40px 80px; /* balanced padding inside right half */
+    box-sizing: border-box;
+    z-index: 0;
+  }
 
     .right-bg-content {
       max-width: 500px;
@@ -174,7 +174,7 @@
     }
 
     /* ---------- MOBILE STYLES ---------- */
-    @media (max-width: 1000px) {
+   @media (max-width: 1000px) {
   body {
     height: auto;
     overflow: auto;
@@ -194,7 +194,7 @@
   }
 
   .left-bg {
-    display: none; /* hide the left half image on mobile */
+    display: none; /* hide left image on mobile */
   }
 
   .right-bg {
@@ -239,7 +239,32 @@
     font-size: 18px;
     padding: 15px 30px;
   }
+
+  /* --- Reorder elements for mobile --- */
+  .mobile-only {
+    order: 1; /* image first */
+  }
+
+  .button-container {
+    order: 2; /* buttons second */
+  }
+
+  .right-bg {
+    order: 3; /* text third */
+  }
+
+  .right-bg img {
+    order: 4; /* UCPH logo last */
+    margin-top: 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
+
   </style>
 </head>
 <body>
@@ -287,6 +312,7 @@
   </div>
 </body>
 </html>
+
 
 
 
