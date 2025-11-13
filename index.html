@@ -151,6 +151,18 @@
       display: none; /* hidden on desktop */
     }
 
+    /* Desktop buttons: center of the viewport */
+    @media (min-width: 1001px) {
+      .button-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;  /* above right-bg and left-bg */
+        text-align: center;
+      }
+    }
+    
     /* MOBILE STYLES */
     @media (max-width: 1000px) {
       body {
@@ -170,8 +182,8 @@
       .button-container {
         position: static;
         transform: none;
-        margin: 15px 0;
         order: 2; /* after image */
+        margin: 15px 0;
       }
 
       .left-bg {
@@ -267,3 +279,4 @@
   </div>
 </body>
 </html>
+
