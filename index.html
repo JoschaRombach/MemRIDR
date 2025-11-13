@@ -75,7 +75,7 @@
       background-position: 50% center;
     }
 
-         /* Right side text block with title */
+/* Right side text block with title and logo */
     .right-bg {
       position: absolute;
       top: 0;
@@ -85,6 +85,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       background-color: #f4f6fa;
       color: #222;
       text-align: justify;
@@ -105,7 +106,7 @@
       font-size: 18px;
       line-height: 1.6;
       max-width: 550px;
-      margin: 0 auto;
+      margin: 0 auto 30px auto;
     }
 
     .right-bg a {
@@ -123,6 +124,7 @@
       margin-top: 15px;
       cursor: pointer;
     }
+
     
     .button-container {
       position: absolute;
@@ -161,31 +163,6 @@
 
     .shiny-button-secondary:hover {
       background-color: rgba(128, 128, 128, 0.8);
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-25%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 1;
-      padding: 0 20px;
-    }
-
-    footer img {
-      width: 200px;
-      height: auto;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    footer div {
-      font-size: 14px;
-      max-width: 300px;
-      text-align: center;
     }
 
     .mobile-only {
@@ -228,16 +205,6 @@
         position: static;
         transform: none;
         margin-bottom: 30px;
-      }
-
-      footer {
-        position: static;
-        transform: none;
-        margin-top: 20px;
-      }
-
-      footer img {
-        width: 150px;
       }
 
       .shiny-button {
@@ -292,6 +259,7 @@
   </div>
 </body>
 </html>
+
 
 
 
