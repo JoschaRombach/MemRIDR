@@ -18,26 +18,37 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <style>
-    html, body {
+     html, body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
       height: 100%;
     }
-
+    
     body {
       background-color: white;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: visible; /* allow fixed buttons to display */
     }
-
+    
     .container {
       position: relative;
       width: 100%;
       height: 100%;
       display: flex;
+      overflow: visible; /* allow fixed buttons to display */
+    }
+    
+    /* Desktop buttons: center in viewport */
+    .button-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      text-align: center;
     }
 
     /* LEFT BG */
@@ -103,10 +114,6 @@
       z-index: 2;
     }
 
-    .button-container {
-      text-align: center;
-    }
-
     .shiny-button {
       display: block;
       margin: 10px auto;
@@ -152,8 +159,14 @@
     /* MOBILE STYLES */
     @media (max-width: 1000px) {
       body {
-        height: auto;
-        overflow: auto;
+        overflow: auto; /* scrollable mobile */
+      }
+    
+      .button-container {
+        position: static;
+        transform: none;
+        order: 2; /* after image, before text */
+        margin: 15px 0;
       }
 
       .container {
@@ -178,17 +191,14 @@
         text-align: center;
         flex-direction: column;
       }
-
-      .button-wrapper {
-        min-height: auto;
-      }
-
+      
       .right-bg-content {
         order: 3; /* text below buttons */
         padding: 10px 0;
       }
 
       .button-wrapper {
+        min-height: auto;
         order: 2; /* buttons after image */
         margin: 15px 0;
       }
@@ -239,16 +249,14 @@
       <!-- Text Content -->
       <div class="right-bg-content">
         <div>
-          <div class="react-container" data-react-id="esaiddtpcgatlmegvquf">
-            <span class="display nowrap css-109" style="color: steelblue; font-size: 60px; margin-left: 10px;">MemRIDR&nbsp;db</span>
+          <div class="react-container">
+            <span style="color: steelblue; font-size: 60px; margin-left: 10px;">MemRIDR&nbsp;db</span>
           </div>
-          <p style="margin: -20px"></p>
-          <div class="react-container" data-react-id="pzqtoxhgmrgorpovtsaj">
-            <span class="display nowrap css-109" style="color: steelblue; font-size: 12.5px; margin-left: 14px;">
+          <div class="react-container">
+            <span style="color: steelblue; font-size: 12.5px; margin-left: 14px;">
               Membrane Recruited Intrinsically Disordered Regions database
             </span>
           </div>
-          <p></p>
         </div>
 
         <p>
@@ -278,6 +286,7 @@
   </div>
 </body>
 </html>
+
 
 
 
