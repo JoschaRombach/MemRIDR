@@ -1,4 +1,4 @@
-MemRIDR (Membrane Recruited Intrinsically Disordered Regions) database is a shiny application for easy access to data from Rombach, Nielsen et al. 2025 
+MemRIDR (Membrane Recruited Intrinsically Disordered Regions) database is a shiny application for easy access to data from Rombach, Nielsen et al. bioRxiv 2025.08.15.670465; doi: https://doi.org/10.1101/2025.08.15.670465
 
 Application available at:  https://memridr.shinyapps.io/access/ 
 
